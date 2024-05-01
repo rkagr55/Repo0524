@@ -1,10 +1,5 @@
 node {
-	stage ('SCM checkout'){
-		git "https://github.com/rkagr55/Repo0524"
-		}
 	stage ('Build'){
-    	dir("DemProject0424") {
 	   bat 'mvn clean compile test'
        }
-}
 }
