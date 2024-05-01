@@ -2,29 +2,26 @@ pipeline {
     agent any
  
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                     withMaven {
-                        bat "mvn clean compile test"
-                    }
-            } 
+                bat "mvn -D clean compile test"
+            }
+ 
+            post {                
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                   publishHTML([
+                       allowMissing: false, 
+                       alwaysLinkToLastBuild: false, 
+                       keepAll: false, 
+                       reportDir: 'target/surefire-reports/', 
+                       reportFiles: 'emailable-report.html', 
+                       reportName: 'HTML Report', 
+                       reportTitles: '', 
+                       useWrapperFileDirectly: true])
+                }
+            }
         }
     }
-post{
-    always { 
-        publishHTML(
-                [
-                    allowMissing: false, 
-                    alwaysLinkToLastBuild: false, 
-                    keepAll: false, 
-                    reportDir: '', 
-                    reportFiles: 'index.html', 
-                    reportName: 'HTML Report', 
-                    reportTitles: '', 
-                    useWrapperFileDirectly: true
-                ]
-        )
-    }
-}
-
 }
