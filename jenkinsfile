@@ -2,9 +2,9 @@ pipeline {
     agent any
  
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                bat "mvn -D clean compile test"
+                bat "mvn clean compile test"
             } 
         }
     }
