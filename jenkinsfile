@@ -4,7 +4,23 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat "mvn clean compile test"
+                bat "mvn -D clean test"
+            }
+ 
+            post {                
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                   publishHTML([
+                       allowMissing: false, 
+                       alwaysLinkToLastBuild: true, 
+                       keepAll: false, 
+                       reportDir: '', 
+                       reportFiles: 'emailable-report.html', 
+                       reportName: 'HTML Report', 
+                       reportTitles: '', 
+                       useWrapperFileDirectly: true])
+                }
             }
         }
     }
