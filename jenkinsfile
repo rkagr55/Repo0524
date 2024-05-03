@@ -26,9 +26,9 @@ pipeline {
         stage('email'){
             steps{
                 emailext body: '${FILE, path="test-output/emailable-report.html"}', 
-                subject: 'Pipeline html report', 
+                to: 'rkagr55@gmail.com,rkagr16@gmail.com',
                 emailext mimeType: 'text/html',
-                to: 'rkagr55@gmail.com,rkagr16@gmail.com'
+                subject: 'Pipeline html report'
             }   
         }
     }
