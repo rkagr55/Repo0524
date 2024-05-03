@@ -15,7 +15,7 @@ pipeline {
                        allowMissing: false, 
                        alwaysLinkToLastBuild: true, 
                        keepAll: false, 
-                       reportDir: 'C:\Repo0524\test-output', 
+                       reportDir: 'test-output', 
                        reportFiles: 'emailable-report.html', 
                        reportName: 'HTML Report', 
                        reportTitles: '', 
