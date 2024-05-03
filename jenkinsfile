@@ -26,7 +26,7 @@ pipeline {
 stage('email'){
             emailext body: '${FILE, path="HTML.Report.html"}', 
             subject: 'Pipeline html report', 
-            to: 'rkagr55@gmail.com,rkagr16@gmail.com
+            to: 'rkagr55@gmail.com,rkagr16@gmail.com'
 }
 '
     }
