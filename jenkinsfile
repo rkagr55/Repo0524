@@ -25,10 +25,11 @@ pipeline {
         }
         stage('email'){
             steps{
-                body: '${FILE, path="test-output/emailable-report.html"}',
-                to: 'rkagr55@gmail.com,rkagr16@gmail.com',
-                mimeType: 'text/html',
-                subject: 'Pipeline html report'
+                emailext attachLog: true, 
+                attachmentsPattern: '**/test-output/emailable-report.html', 
+                body: 'Email sent out from Jenkins', 
+                subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', 
+                to: 'rkagr55@gmail.com'
             }   
         }
     }
