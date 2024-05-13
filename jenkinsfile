@@ -29,7 +29,7 @@ pipeline {
                 attachmentsPattern: '**/test-output/emailable-report.html', 
                 body: 'Email sent out from Jenkins', 
                 subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', 
-                to: 'rkagr55@gmail.com'
+                to: 'rkagr55@gmail.com,rkagr16@gmail.com'
             }   
         }
     }
